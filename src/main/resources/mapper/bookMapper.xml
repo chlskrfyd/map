@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper	namespace="com.my.nackryong.dao.BookMapper">
+<select id="getBookList" resultType="bookVO" parameterType="map">
+	SELECT
+		*
+		FROM
+			book
+		WHERE
+			<choose>
+				<when test="searchItem=='content' ">content</when>
+				<when test="searchItem=='userid' ">userid</when>
+			</choose>
+			LIKE '%' || #{searchKeyword} || '%'
+		ORDER BY
+			seq DESC	
+</select>
+</mapper>

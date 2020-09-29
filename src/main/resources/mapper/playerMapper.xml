@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper	namespace="com.my.nackryong.dao.PlayerMapper">
+<insert id="sign1" parameterType="playerVO">
+	insert into
+	player
+		values(
+			#{playerid},
+			#{playerpwd}
+		)
+</insert>
+<select id="login" parameterType="playerVO" resultType="int">
+		select 
+		count(*)
+		from
+			player
+		where
+			playerid = #{playerid}
+			and playerpwd = #{playerpwd}
+	</select>
+</mapper>
